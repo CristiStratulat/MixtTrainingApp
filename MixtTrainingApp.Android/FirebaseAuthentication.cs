@@ -22,18 +22,17 @@ namespace MixtTrainingApp.Droid
                 var user = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
                 var token = await user.User.GetIdToken(false);
                 return user.User.Uid;
-                
+
             }
-            catch (Exception ex)
+            catch (FirebaseAuthInvalidUserException e)
             {
-                if (ex is FirebaseAuthInvalidUserException)
-                {
-                    return "noUserFound";
-                }
-                else
-                {
-                    return "";
-                }
+                e.PrintStackTrace();
+                return string.Empty;
+            }
+            catch (FirebaseAuthInvalidCredentialsException e)
+            {
+                e.PrintStackTrace();
+                return string.Empty;
             }
         }
         public bool SignOut()

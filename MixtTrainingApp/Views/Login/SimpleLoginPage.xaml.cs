@@ -25,18 +25,14 @@ namespace MixtTrainingApp.Views.Login
         {
             string token = await auth.LoginWithEmailAndPassword(EmailEntry.Text, PasswordEntry.Text);
             if (token != String.Empty)
-            {
-                Application.Current.MainPage = new MainPage();
-            }
+                Application.Current.MainPage = new MainPage(); 
             else
-            { 
                 ShowError();
-            }
         }
 
         private async void ShowError()
         {
-            await DisplayAlert("Authentication Failed", "Email or password are incorrect. Try again!", "OK");
+            await DisplayAlert("Authentication Failed","Wrong Email or Password", "OK");
         }
     }
 }
