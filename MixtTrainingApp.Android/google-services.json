@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1029812775469",
+    "project_id": "mixttraining-2213f",
+    "storage_bucket": "mixttraining-2213f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029812775469:android:81301d6baa95dc91f066a4",
+        "android_client_info": {
+          "package_name": "com.cms.mixttraining"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029812775469-1m8mlpso5ptejr5f0qn1kvde7tp3r3bt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbG6sqU9WDxvoDK2uF4uzdwPxV8qSmKZg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029812775469-1m8mlpso5ptejr5f0qn1kvde7tp3r3bt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
