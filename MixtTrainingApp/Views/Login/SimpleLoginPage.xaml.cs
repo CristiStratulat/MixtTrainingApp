@@ -25,7 +25,7 @@ namespace MixtTrainingApp.Views.Login
         {
             string token = await auth.LoginWithEmailAndPassword(EmailEntry.Text, PasswordEntry.Text);
             if (token != String.Empty)
-                Application.Current.MainPage = new MainPage(); 
+                await Navigation.PushAsync(new MainPage());
             else
                 ShowError();
         }

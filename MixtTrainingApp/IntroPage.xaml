@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MixtTrainingApp.IntroPage"
+             BackgroundImageSource="BackGround.jpg">
+    <ContentPage.Content>
+        <Grid RowSpacing="5" VerticalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label 
+                Grid.Row="6"
+                    Text="Mixt Training"
+                FontSize="40"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                   FontAttributes="Bold"
+                TextColor="White"
+                />
+            <Label 
+                Grid.Row="7"
+                Text="by Severin Irimia"
+                FontSize="20"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                TextColor="White"/>
+            <Label
+                Grid.Row="13"
+                FontSize="30"
+                Text="You are built to be epic!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                  FontAttributes="Bold"
+                 TextColor="White"/>
+            <Button Grid.Row="15"
+                Text="Get Started"
+                    Clicked="Button_Clicked"
+                    TextColor="White"
+                    BackgroundColor="Gray"/>
+                
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
