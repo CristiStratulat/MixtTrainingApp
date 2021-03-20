@@ -6,6 +6,7 @@ namespace MixtTrainingApp
 {
     public partial class App : Application
     {
+        static public string UserUID { get; set; }
         public App()
         {
             InitializeComponent();

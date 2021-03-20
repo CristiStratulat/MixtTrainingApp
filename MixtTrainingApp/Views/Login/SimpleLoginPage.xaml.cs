@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 using System;
+using MixtTrainingApp.Views.SignUp;
 
 namespace MixtTrainingApp.Views.Login
 {
@@ -33,6 +34,11 @@ namespace MixtTrainingApp.Views.Login
         private async void ShowError()
         {
             await DisplayAlert("Authentication Failed","Wrong Email or Password", "OK");
+        }
+
+        private async void SfButton_Clicked_1(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SimpleSignUpPage());
         }
     }
 }

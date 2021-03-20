@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using MixtTrainingApp.Droid;
 using Firebase.Auth;
-using Android.Gms.Extensions;
 
 [assembly: Dependency(typeof(FirebaseAuthentication))]
 namespace MixtTrainingApp.Droid
@@ -20,7 +19,7 @@ namespace MixtTrainingApp.Droid
             try
             {
                 var user = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
-                var token = await user.User.GetIdToken(false);
+                //var token = await user.User.GetIdToken(false);
                 return user.User.Uid;
 
             }
