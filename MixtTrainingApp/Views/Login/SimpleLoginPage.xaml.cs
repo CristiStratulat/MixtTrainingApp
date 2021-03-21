@@ -24,11 +24,16 @@ namespace MixtTrainingApp.Views.Login
 
         public async void SfButton_Clicked(object sender, EventArgs e)
         {
-            string token = await auth.LoginWithEmailAndPassword(EmailEntry.Text, PasswordEntry.Text);
-            if (token != String.Empty)
-                await Navigation.PushAsync(new MainPage());
+            if (App.CheckConnection())
+            {
+                string token = await auth.LoginWithEmailAndPassword(EmailEntry.Text, PasswordEntry.Text);
+                if (token != String.Empty)
+                    await Navigation.PushAsync(new MainPage());
+                else
+                    ShowError();
+            }
             else
-                ShowError();
+                await DisplayAlert("No Internet Connection", "No active Internet Connection Detected", "Ok");
         }
 
         private async void ShowError()

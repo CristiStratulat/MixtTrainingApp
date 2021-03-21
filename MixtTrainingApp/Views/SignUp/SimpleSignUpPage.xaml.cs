@@ -28,9 +28,18 @@ namespace MixtTrainingApp.Views.SignUp
         }
         private async void Register(object sender, System.EventArgs e)
         {
-            string Token = await auth.RegisterWithEmailAndPassword(SignUpEmailEntry.Text, PasswordEntry.Text);
-            Console.WriteLine(Token);
-            
+            if (App.CheckConnection())
+            {
+                string Token = await auth.RegisterWithEmailAndPassword(SignUpEmailEntry.Text, PasswordEntry.Text);
+                Console.WriteLine(Token);
+            }
+            else
+                await DisplayAlert("No Internet Connection","No active Internet Connection Detected","Ok");
+
+        }
+        private bool passwordMatch (string password1, string password2)
+        {
+            return password1 == password2;
         }
     }
 }
