@@ -3,11 +3,11 @@ using Xamarin.Essentials;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.IO;
-using System;
-
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+using System.Threading.Tasks;
 namespace MixtTrainingApp
 {
-    public partial class App : Application
+    public partial class App : Xamarin.Forms.Application
     {
         static public string UserUID { get; set; }
         static public MixtTraining_Configuration conf;
@@ -17,13 +17,14 @@ namespace MixtTrainingApp
             LoadJson();
             InitializeComponent();
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(conf.syncfusion);
-            MainPage = new NavigationPage(new IntroPage());
+            Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
+            if (CheckConnection())
+                checkUserLogInAsync();
         }
 
 
         protected override void OnStart()
         {
-            Console.WriteLine(conf.syncfusion);
         }
 
         protected override void OnSleep()
@@ -59,6 +60,25 @@ namespace MixtTrainingApp
                 App.Current.Properties.Clear();
                 App.Current.Properties["PreviousInstalled"] = "true";
                 App.Current.SavePropertiesAsync();
+            }
+        }
+        public static void notSignedIn()
+        {
+            App.Current.MainPage = new NavigationPage(new IntroPage());
+            App.Current.Properties.Remove("App.UserUID");
+            App.Current.SavePropertiesAsync();
+            App.UserUID = "";
+        }
+         async Task checkUserLogInAsync()
+        {
+            App.UserUID = App.Current.Properties.ContainsKey("App.UserUID") ? App.Current.Properties["App.UserUID"] as string : "";
+            if (!string.IsNullOrEmpty(App.UserUID) && !string.IsNullOrWhiteSpace(App.UserUID) )//user exists
+            {
+                App.Current.MainPage = new NavigationPage(new MainPage());
+            }
+            else
+            {
+                notSignedIn();
             }
         }
         

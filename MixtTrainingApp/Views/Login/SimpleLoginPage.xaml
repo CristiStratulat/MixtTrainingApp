@@ -59,6 +59,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <!--  Label to display the title of this page  -->
@@ -95,7 +97,7 @@
                             Text="{Binding Email}"
                             TextColor="{DynamicResource Gray-900}" />
                     </border:SfBorder>
-
+                    <Label Grid.Row="3" TextColor="Red" Text="Please enter a valid email" IsVisible="false" x:Name="EmailError" HorizontalTextAlignment="Start"/>
                     <!--  Entry to get password from user  -->
                     <border:SfBorder
                         Grid.Row="4"
@@ -111,11 +113,11 @@
                             Text="{Binding Password}"
                             TextColor="{DynamicResource Gray-900}" />
                     </border:SfBorder>
-
+                    <Label Grid.Row="5" TextColor="Red" Text="Please enter your password" IsVisible="false" x:Name="PasswordError"  HorizontalTextAlignment="Start"/>
                     <!--  Forgot password link  -->
                     <Label
                         x:Name="ForgotPasswordLabel"
-                        Grid.Row="5"
+                        Grid.Row="6"
                         Margin="0,16"
                         FontFamily="{StaticResource Montserrat-SemiBold}"
                         FontSize="12"
@@ -129,7 +131,7 @@
 
                     <!--  Login button  -->
                     <buttons:SfButton
-                        Grid.Row="6"
+                        Grid.Row="7"
                         Margin="0,16"
                         Command="{Binding LoginCommand}"
                         Clicked="SfButton_Clicked"
@@ -138,7 +140,7 @@
 
 
                     <Label
-                        Grid.Row="7"
+                        Grid.Row="8"
                         FontFamily="{StaticResource Montserrat-Medium}"
                         HorizontalTextAlignment="Center"
                         Style="{StaticResource LabelStyle}"

@@ -40,7 +40,7 @@
                 HorizontalOptions="CenterAndExpand"
                   FontAttributes="Bold"
                  TextColor="White"/>
-            <Button Grid.Row="15"
+            <Button Grid.Row="14"
                 Text="Get Started"
                     Clicked="Button_Clicked"
                     TextColor="White"

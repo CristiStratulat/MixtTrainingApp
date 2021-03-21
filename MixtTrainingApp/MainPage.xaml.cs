@@ -1,18 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MixtTrainingApp
 {
     public partial class MainPage : ContentPage
     {
+        IFirebaseAuthenticaton auth;
         public MainPage()
         {
             InitializeComponent();
+            auth = DependencyService.Get<IFirebaseAuthenticaton>();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            auth.SignOut();
+            App.Current.MainPage = new NavigationPage(new IntroPage());
         }
     }
 }

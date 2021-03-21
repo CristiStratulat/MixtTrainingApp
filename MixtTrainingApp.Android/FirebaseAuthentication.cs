@@ -34,16 +34,17 @@ namespace MixtTrainingApp.Droid
                 return string.Empty;
             }
         }
-        public bool SignOut()
+        public async Task SignOut()
         {
             try
             {
                 FirebaseAuth.Instance.SignOut();
-                return true;
+                App.Current.Properties.Remove("App.UserUID");
+                await App.Current.SavePropertiesAsync();
             }
             catch (Exception)
             {
-                return false;
+
             }
         }
     }
