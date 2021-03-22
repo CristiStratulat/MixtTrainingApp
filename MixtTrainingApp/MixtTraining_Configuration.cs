@@ -9,5 +9,10 @@ namespace MixtTrainingApp
             get;
             set;
         }
+        public string firebase
+        {
+            get;
+            set;
+        }
     }
 }

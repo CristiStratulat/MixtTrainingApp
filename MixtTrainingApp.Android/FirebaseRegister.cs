@@ -19,10 +19,6 @@ namespace MixtTrainingApp.Droid
             {
                 return "not";
             }
-            catch (FirebaseAuthInvalidCredentialsException)
-            {
-                return "email";
-            }
             catch (FirebaseAuthUserCollisionException)
             {
                 return "exsisting";

@@ -19,7 +19,9 @@ namespace MixtTrainingApp
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(conf.syncfusion);
             Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
             if (CheckConnection())
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 checkUserLogInAsync();
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         }
 
 
@@ -69,7 +71,9 @@ namespace MixtTrainingApp
             App.Current.SavePropertiesAsync();
             App.UserUID = "";
         }
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
          async Task checkUserLogInAsync()
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             App.UserUID = App.Current.Properties.ContainsKey("App.UserUID") ? App.Current.Properties["App.UserUID"] as string : "";
             if (!string.IsNullOrEmpty(App.UserUID) && !string.IsNullOrWhiteSpace(App.UserUID) )//user exists

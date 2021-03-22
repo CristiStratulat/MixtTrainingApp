@@ -2,7 +2,10 @@
 using Xamarin.Forms.Xaml;
 using System;
 using Xamarin.Forms;
-
+using System.Net.Mail;
+using MixtTrainingApp.Views.Login;
+using MixtTrainingApp.Views.P;
+using MixtTrainingApp.Helper;
 namespace MixtTrainingApp.Views.SignUp
 {
     /// <summary>
@@ -16,6 +19,7 @@ namespace MixtTrainingApp.Views.SignUp
         /// Initializes a new instance of the <see cref="SimpleSignUpPage" /> class.
         /// </summary>
         IFirebaseRegister auth;
+        readonly FireBaseHelperClient firebaseClient = new FireBaseHelperClient();
         public SimpleSignUpPage()
         {
             InitializeComponent();
@@ -28,10 +32,69 @@ namespace MixtTrainingApp.Views.SignUp
         }
         private async void Register(object sender, System.EventArgs e)
         {
+            bool ok = true;
             if (App.CheckConnection())
             {
-                string Token = await auth.RegisterWithEmailAndPassword(SignUpEmailEntry.Text, PasswordEntry.Text);
-                Console.WriteLine(Token);
+                //NameError.IsVisible = false;
+                EmailError.IsVisible = false;
+                PasswordError.IsVisible = false;
+                ConfirmError.IsVisible = false;
+
+               /* if (String.IsNullOrEmpty(NameEntry.Text) || String.IsNullOrWhiteSpace(NameEntry.Text))
+                {
+                    NameError.IsVisible = true;
+                    ok = false;
+                }*/
+
+                if (ok && (String.IsNullOrEmpty(SignUpEmailEntry.Text) || String.IsNullOrWhiteSpace(SignUpEmailEntry.Text)))
+                {
+                    EmailError.IsVisible = true;
+                    ok = false;
+                }
+                if (ok)
+                {
+                    string email = SignUpEmailEntry.Text.Trim();
+                    if (!IsValidEmail(email))
+                    {
+                        EmailError.IsVisible = true;
+                        ok = false;
+                    }
+                }
+                if( ok && (String.IsNullOrEmpty(PasswordEntry.Text)|| String.IsNullOrWhiteSpace(PasswordEntry.Text)))
+                {
+                    ok = false;
+                    PasswordError.IsVisible = true;
+                }
+                if (ok && !passwordMatch(PasswordEntry.Text, ConfirmPasswordEntry.Text))
+                {
+                    ok = false;
+                    ConfirmError.IsVisible = true;
+                }
+
+                if (ok)
+                {
+                    string Token="";
+                    bool connection = true;
+                    try
+                    {
+                        Token = await auth.RegisterWithEmailAndPassword(SignUpEmailEntry.Text, PasswordEntry.Text);
+                    }
+                    catch
+                    {
+                        connection = false;
+                    }
+                    if(connection)
+                    {
+                        if (!String.IsNullOrEmpty(Token)&&Token!="exsisting"&&Token!="not")
+                        {
+                            await Navigation.PushAsync(new AddProfilePage(SignUpEmailEntry.Text));
+                        }
+                        else if (Token == "existing")
+                        { 
+                            await DisplayAlert("Attention", "An account using this email already exists", "OK");
+                        }
+                    }
+                }
             }
             else
                 await DisplayAlert("No Internet Connection","No active Internet Connection Detected","Ok");
@@ -41,5 +104,18 @@ namespace MixtTrainingApp.Views.SignUp
         {
             return password1 == password2;
         }
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new MailAddress(email);
+                return addr.Address == email;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+       
     }
 }

@@ -49,7 +49,7 @@
                                           UWP='350'}">
                 <StackLayout
                     HorizontalOptions="Center"
-                    Spacing="24"
+                    Spacing="16"
                     VerticalOptions="CenterAndExpand">
 
                     <!--  Label to display the title of this page  -->
@@ -70,29 +70,32 @@
                         Style="{StaticResource LabelStyle}"
                         Text="Create an account to start doing more"
                         TextColor="{DynamicResource Gray-800}" />
-
-                    <!--  Entry to get username from user  -->
+                    <!--<StackLayout >
+                      Entry to get username from user  
                     <border:SfBorder
                         BackgroundColor="{DynamicResource Gray-White}"
                         BorderColor="{Binding Source={x:Reference NameEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
                         Style="{StaticResource SfBorderStyle}">
                         <control:BorderlessEntry
                             x:Name="NameEntry"
-                            Placeholder="Name"
+                            Placeholder="Name and Surname"
                             PlaceholderColor="{DynamicResource Gray-700}"
                             Style="{StaticResource EntryStyle}"
                             Text="{Binding Name}"
                             TextColor="{DynamicResource Gray-900}" />
                     </border:SfBorder>
-
+                        <Label Padding="0" TextColor="Red" Text="Please enter your name" IsVisible="false"  x:Name="NameError"/>
+                    </StackLayout>
+                        -->
+                    <StackLayout>
                     <!--  Entry to get email ID from user  -->
-                    <border:SfBorder
+                        <border:SfBorder
                                 BackgroundColor="{DynamicResource Gray-White}"
                                 BorderColor="{Binding Source={x:Reference SignUpEmailEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
                                 Style="{StaticResource SfBorderStyle}">
                         <control:BorderlessEntry
                                     x:Name="SignUpEmailEntry"
-                                    Placeholder="Email *"
+                                    Placeholder="Email"
                                     Keyboard="Email"
                                     ReturnType="Next"
                                     PlaceholderColor="{DynamicResource Gray-700}"
@@ -100,10 +103,10 @@
                                     Text="{Binding SignUpEmailEntry}"
                                     TextColor="{DynamicResource Gray-900}" />
                     </border:SfBorder>
-                    <Label Padding="0" TextColor="Red" Text="Please enter a valid email" IsVisible="False"  x:Name="EmailError"/>
-
+                    <Label Padding="0" TextColor="Red" Text="Please enter a valid email" IsVisible="false"  x:Name="EmailError"/>
+                    </StackLayout>
                     <!--  Entry to get password from user  -->
-                    <border:SfBorder
+                    <StackLayout>                    <border:SfBorder
                         BackgroundColor="{DynamicResource Gray-White}"
                         BorderColor="{Binding Source={x:Reference PasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
                         Style="{StaticResource SfBorderStyle}">
@@ -116,7 +119,9 @@
                             Text="{Binding Password}"
                             TextColor="{DynamicResource Gray-900}" />
                     </border:SfBorder>
-
+                        <Label Padding="0" TextColor="Red" Text="Please enter a password" IsVisible="false"  x:Name="PasswordError"/>
+                    </StackLayout>
+                    <StackLayout>
                     <!--  Entry to get the confirm password from user  -->
                     <border:SfBorder
                         BackgroundColor="{DynamicResource Gray-White}"
@@ -131,7 +136,8 @@
                             Text="{Binding ConfirmPassword}"
                             TextColor="{DynamicResource Gray-900}" />
                     </border:SfBorder>
-
+                        <Label Padding="0" TextColor="Red" Text="Passwords do not match" IsVisible="false"  x:Name="ConfirmError"/>
+                    </StackLayout>
                     <!--  Sign-up button  -->
                     <buttons:SfButton
                         Command="{Binding SignUpCommand}"
