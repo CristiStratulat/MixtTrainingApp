@@ -15,7 +15,7 @@ namespace MixtTrainingApp.Helper
            
         }
         */
-        public async Task AddClient(string UID, string email, string firstName, string lastName, int age, int height, int weight, string sex, string phonenumber)
+        public async Task AddClient(string UID, string email, string firstName, string lastName, int age, int height, int weight, string sex)
         {
             await firebaseClient.Child(UserType).Child(UID).PostAsync(new Client()
             {
@@ -26,7 +26,6 @@ namespace MixtTrainingApp.Helper
                 Height=height,
                 Weight=weight,
                 Sex=sex,
-                PhoneNumber=phonenumber,
             });
         }
 

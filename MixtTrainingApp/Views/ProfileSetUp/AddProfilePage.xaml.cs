@@ -21,18 +21,58 @@ namespace MixtTrainingApp.Views.P
             mail = email;
         }
 
-        private async void SfButton_Clicked(object sender, System.EventArgs e)
+        private async void SfButton_Clicked(object sender, EventArgs e)
         {
-            AddUserDetails(mail,FirstNameEntry.Text,LastNameEntry.Text,ageCalculator(Birthday.Date),Convert.ToInt32(HeightEntry.Text),Convert.ToInt32(WeightEntry.Text),Sex.SelectedItem.ToString(),PhoneNoEntry.Text);
-            App.UserUID = "";
-            App.Current.Properties["App.UserUID"] = "";
-            await App.Current.SavePropertiesAsync();
-            await DisplayAlert("Congratulations", "Your account has been created", "OK");
-            App.Current.MainPage = new NavigationPage(new SimpleLoginPage());
+            FirstNameError.IsVisible = false;
+            LastNameError.IsVisible = false;
+            DatePickerError.IsVisible = false;
+            HeightEntryError.IsVisible = false;
+            WeightEntryError.IsVisible = false;
+            SexPickerError.IsVisible = false;
+            bool ok = true;
+            if (String.IsNullOrEmpty(FirstNameEntry.Text) || String.IsNullOrWhiteSpace(FirstNameEntry.Text))
+            {
+                ok = false;
+                FirstNameError.IsVisible = true;
+            }
+            if (ok && (String.IsNullOrWhiteSpace(LastNameEntry.Text) || String.IsNullOrEmpty(LastNameEntry.Text)))
+            {
+                ok = false;
+                LastNameError.IsVisible = true;
+            }
+            if (ok && Birthday.Date == DateTime.Today)
+            {
+                ok = false;
+                DatePickerError.IsVisible = true;
+            }
+            if (ok && (String.IsNullOrWhiteSpace(HeightEntry.Text) || String.IsNullOrEmpty(HeightEntry.Text)))
+            {
+                ok = false;
+                HeightEntryError.IsVisible = true;
+            }
+            if (ok && (String.IsNullOrWhiteSpace(WeightEntry.Text) || String.IsNullOrEmpty(WeightEntry.Text)))
+            {
+                ok = false;
+                WeightEntryError.IsVisible = true;
+            }
+            if (ok && Sex.SelectedItem == null)
+            {
+                ok = false;
+                SexPickerError.IsVisible = true;
+            }
+            if (ok)
+            {
+                AddUserDetails(mail, FirstNameEntry.Text, LastNameEntry.Text, ageCalculator(Birthday.Date), Convert.ToInt32(HeightEntry.Text), Convert.ToInt32(WeightEntry.Text), Sex.SelectedItem.ToString());
+                App.UserUID = "";
+                App.Current.Properties["App.UserUID"] = "";
+                await App.Current.SavePropertiesAsync();
+                await DisplayAlert("Congratulations", "Your account has been created", "OK");
+                App.Current.MainPage = new NavigationPage(new SimpleLoginPage());
+            }
         }
-        private async void AddUserDetails(string Email, string FirstName, string LastName, int Age, int Height, int Weight, string Sex, string phonenumber)
+        private async void AddUserDetails(string Email, string FirstName, string LastName, int Age, int Height, int Weight, string Sex)
         {
-            await firebaseClient.AddClient(App.UserUID, Email, FirstName, LastName, Age, Height, Weight, Sex, phonenumber);
+            await firebaseClient.AddClient(App.UserUID, Email, FirstName, LastName, Age, Height, Weight, Sex);
         }
         private int ageCalculator (DateTime date)
         {

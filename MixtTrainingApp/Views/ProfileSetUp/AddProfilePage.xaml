@@ -91,6 +91,7 @@
                         Placeholder="First Name"
                         Style="{StaticResource EntryTextStyle}" />
                 </border:SfBorder>
+                    <Label TextColor="Red" Text="Please enter your First Name" Style="{StaticResource EntryTextStyle}" IsVisible="false" x:Name="FirstNameError"/>
                 </StackLayout>
                 
                 <!--  Last name entry with border  -->
@@ -105,6 +106,7 @@
                         Placeholder="Last Name"
                         Style="{StaticResource EntryTextStyle}" />
                 </border:SfBorder>
+                <Label TextColor="Red" Text="Please enter your Last Name" Style="{StaticResource EntryTextStyle}" IsVisible="false" x:Name="LastNameError"/>
                 </StackLayout>
                 
                 <!--  Birthday selection -->
@@ -119,11 +121,12 @@
                         Format="dd/MM/yyyy"
                         Style="{StaticResource EntryTextStyle}"/>
                     </border:SfBorder>
+                    <Label TextColor="Red" Text="Please pick your birthday" Style="{StaticResource EntryTextStyle}" IsVisible="false" x:Name="DatePickerError"/>
                 </StackLayout>
                 
                 <!-- Height entry-->
                 <StackLayout>
-                <Label Text="Enter your weight:" Style="{StaticResource EntryTextStyle}"/>
+                <Label Text="Enter your height:" Style="{StaticResource EntryTextStyle}"/>
                 <border:SfBorder
                     Grid.Column="2"
                     BorderColor="{Binding Source={x:Reference LastNameEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
@@ -133,6 +136,7 @@
                         Placeholder="Height"
                         Style="{StaticResource EntryTextStyle}" />
                 </border:SfBorder>
+                    <Label TextColor="Red" Text="Please enter your weight" Style="{StaticResource EntryTextStyle}" IsVisible="false" x:Name="HeightEntryError"/>
                 </StackLayout>
                 
                 <!-- Weight Entry -->
@@ -147,6 +151,7 @@
                         Placeholder="Weight"
                         Style="{StaticResource EntryTextStyle}" />
                 </border:SfBorder>
+                <Label TextColor="Red" Text="Please enter your weight" Style="{StaticResource EntryTextStyle}" IsVisible="false" x:Name="WeightEntryError"/>
                 </StackLayout>
                 
                 <!-- Sex Picker-->
@@ -165,27 +170,10 @@
                     </Picker.ItemsSource>
                     </Picker>
                 </border:SfBorder>
+                <Label TextColor="Red" Text="Please pick your gender" Style="{StaticResource EntryTextStyle}" IsVisible="false" x:Name="SexPickerError"/>
                 </StackLayout>
-                
-                <!--  Phone number entry with border  -->
-                <StackLayout>
-                <Label Text="Phone Number:" Style="{StaticResource EntryTextStyle}"/>
-                <border:SfBorder
-                    Grid.Column="2"
-                    BorderColor="{Binding Source={x:Reference PhoneNoEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
-                    Style="{StaticResource FormBorderStyle}">
-                    <control:BorderlessEntry
-                        x:Name="PhoneNoEntry"
-                        Keyboard="Telephone" 
-                        Placeholder="Phone Number : e.g. +40 XXX XXX XXX "
-                        Style="{StaticResource EntryTextStyle}" >
-                        <control:BorderlessEntry.Behaviors>
-                            <behaviours:EntryMaskedBehavior Mask="+40 XXX XXX XXX" Prefix="+40"/>
-                        </control:BorderlessEntry.Behaviors>
-                    </control:BorderlessEntry>
-                </border:SfBorder>
-                </StackLayout>
-
+               
+               
                 <buttons:SfButton
                     Margin="0,16,0,0"
                     HorizontalOptions="Center"
