@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 using System;
 using System.Net.Mail;
 using MixtTrainingApp.Views.SignUp;
+using MixtTrainingApp.Views.ForgotPassword;
 namespace MixtTrainingApp.Views.Login
 {
     /// <summary>
@@ -100,6 +101,11 @@ namespace MixtTrainingApp.Views.Login
         private async void SfButton_Clicked_1(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SimpleSignUpPage());
+        }
+        
+        private async void ForgotPassword (object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SimpleForgotPasswordPage());
         }
     }
 }

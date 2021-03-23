@@ -14,13 +14,17 @@ namespace MixtTrainingApp.Views.P
     public partial class AddProfilePage : ContentPage
     {
         private string mail;
+        private string pass;
+        private IFirebaseRegister auth;
         readonly FireBaseHelperClient firebaseClient = new FireBaseHelperClient();
-        public AddProfilePage(string email)
+        public AddProfilePage(string email, string password)
         {
             InitializeComponent();
             mail = email;
+            pass = password;
+            auth = DependencyService.Get<IFirebaseRegister>();
         }
-
+        
         private async void SfButton_Clicked(object sender, EventArgs e)
         {
             FirstNameError.IsVisible = false;
@@ -62,12 +66,32 @@ namespace MixtTrainingApp.Views.P
             }
             if (ok)
             {
-                AddUserDetails(mail, FirstNameEntry.Text, LastNameEntry.Text, ageCalculator(Birthday.Date), Convert.ToInt32(HeightEntry.Text), Convert.ToInt32(WeightEntry.Text), Sex.SelectedItem.ToString());
-                App.UserUID = "";
-                App.Current.Properties["App.UserUID"] = "";
-                await App.Current.SavePropertiesAsync();
-                await DisplayAlert("Congratulations", "Your account has been created", "OK");
-                App.Current.MainPage = new NavigationPage(new SimpleLoginPage());
+                string Token = "";
+                bool connection = true;
+                try
+                {
+                    Token = await auth.RegisterWithEmailAndPassword(mail, pass);
+                }
+                catch
+                {
+                    connection = false;
+                }
+                if (connection)
+                {
+                    if (!String.IsNullOrEmpty(Token) && Token != "exsisting" && Token != "not")
+                    {
+                        AddUserDetails(mail, FirstNameEntry.Text, LastNameEntry.Text, ageCalculator(Birthday.Date), Convert.ToInt32(HeightEntry.Text), Convert.ToInt32(WeightEntry.Text), Sex.SelectedItem.ToString());
+                        App.UserUID = "";
+                        App.Current.Properties["App.UserUID"] = "";
+                        await App.Current.SavePropertiesAsync();
+                        await DisplayAlert("Congratulations", "Your account has been created", "OK");
+                        App.Current.MainPage = new NavigationPage(new SimpleLoginPage());
+                    }
+                    else if (Token == "existing")
+                    {
+                        await DisplayAlert("Attention", "An account using this email already exists", "OK");
+                    }
+                }
             }
         }
         private async void AddUserDetails(string Email, string FirstName, string LastName, int Age, int Height, int Weight, string Sex)

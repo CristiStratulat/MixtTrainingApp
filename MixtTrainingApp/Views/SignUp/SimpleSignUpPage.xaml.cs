@@ -73,27 +73,7 @@ namespace MixtTrainingApp.Views.SignUp
 
                 if (ok)
                 {
-                    string Token="";
-                    bool connection = true;
-                    try
-                    {
-                        Token = await auth.RegisterWithEmailAndPassword(SignUpEmailEntry.Text, PasswordEntry.Text);
-                    }
-                    catch
-                    {
-                        connection = false;
-                    }
-                    if(connection)
-                    {
-                        if (!String.IsNullOrEmpty(Token)&&Token!="exsisting"&&Token!="not")
-                        {
-                            await Navigation.PushAsync(new AddProfilePage(SignUpEmailEntry.Text));
-                        }
-                        else if (Token == "existing")
-                        { 
-                            await DisplayAlert("Attention", "An account using this email already exists", "OK");
-                        }
-                    }
+                    await Navigation.PushAsync(new AddProfilePage(SignUpEmailEntry.Text,PasswordEntry.Text));
                 }
             }
             else
