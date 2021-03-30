@@ -6,6 +6,7 @@ using System;
 using System.Net.Mail;
 using MixtTrainingApp.Views.SignUp;
 using MixtTrainingApp.Views.ForgotPassword;
+using MixtTrainingApp.Views.WorkoutsNavigation;
 namespace MixtTrainingApp.Views.Login
 {
     /// <summary>
@@ -64,7 +65,7 @@ namespace MixtTrainingApp.Views.Login
 
                     if (auth.IsSignIn() && !string.IsNullOrEmpty(App.UserUID) && !string.IsNullOrWhiteSpace(App.UserUID))
                     {
-                        App.Current.MainPage = new NavigationPage(new MainPage());
+                        App.Current.MainPage = new NavigationPage(new NavigationListCardPage());
                         Application.Current.Properties["App.UserUID"] = App.UserUID;
                         await App.Current.SavePropertiesAsync();
 

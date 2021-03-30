@@ -66,6 +66,12 @@
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox">
       <Version>18.4.0.44</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfListView">
+      <Version>18.4.0.44</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfRating">
+      <Version>18.4.0.44</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Firebase.Auth">
       <Version>120.0.2</Version>
     </PackageReference>
