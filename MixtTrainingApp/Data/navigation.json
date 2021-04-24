@@ -2,47 +2,32 @@
   "navigationList": [
     {
       "itemName": "STRENGTH",
-      "name": "STRENGTH PROGRAM",
-      "description": "Burger, Pizza",
       "itemDescription": "Strength training is a type of physical exercise specializing in the use of resistance to induce muscular contraction which builds the strength, anaerobic endurance, and size of skeletal muscles.",
       "itemImage": "Recipe19.png",
-      "offer": "40% OFF - Use code OFF40",
       "itemRating": 4.5
     },
     {
       "itemName": "BODY BUILDING",
       "itemDescription": "Bodybuilding is the use of progressive resistance exercise to control and develop one's musculature (muscle building) by muscle hypertrophy for aesthetic purposes.",
       "itemImage": "Recipe8.png",
-      "name": "McDonalds",
-      "description": "Burger, Fast Food",
-      "offer": "60% OFF - Use code OFF60",
       "itemRating": 4.4
     },
     {
       "itemName": "CIRCUIT TRAINING",
       "itemDescription": "Circuit training is a combination of two or more exercises performed with short rest periods between them for either a set number of repetitions or a prescribed amount of time.",
       "itemImage": "Recipe3.png",
-      "name": "Macrons",
-      "description": "Cafe, Beverages",
-      "offer": "50% OFF - Use code OFF50",
       "itemRating": 4.2
     },
     {
       "itemName": "ISOMETRIC",
       "itemDescription": "Isometric exercises are contractions of a particular muscle or group of muscles. During isometric exercises, the muscle doesn't noticeably change length and the affected joint doesn't move. Isometric exercises help maintain strength. They can also build strength, but not effectively.",
       "itemImage": "Recipe9.png",
-      "name": "Kings Kitchen",
-      "description": "North Indian, Chinese, Sushi",
-      "offer": "40% OFF - Use code OFF40",
       "itemRating": 4.5
     },
-    {
-      "itemName": "CONDITIONING",
+      {
+        "itemName": "CONDITIONING",
       "itemDescription": "Conditioning is exercising with the goal of increasing your cardiovascular system's performance.",
       "itemImage": "Recipe13.png",
-      "name": "Chai Wale",
-      "description": "Cafe, Beverages, Fast Food",
-      "offer": "50% OFF - Use code OFF50",
       "itemRating": 4.6
     }
     

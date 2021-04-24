@@ -50,8 +50,8 @@ namespace MixtTrainingApp.Models.WorkoutsNavigation
         /// <summary>
         /// Gets or sets the average rating of an item.
         /// </summary>
-        [DataMember(Name = "itemRating")]
-        public double ItemRating { get; set; }
+       [DataMember(Name = "itemRating")]
+         public double ItemRating { get; set; }
 
         #endregion
     }

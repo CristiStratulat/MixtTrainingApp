@@ -47,7 +47,7 @@ namespace MixtTrainingApp.ViewModels.WorkoutsNavigation
         /// Gets or sets a collection of values to be displayed in the Navigation list page.
         /// </summary>
         [DataMember(Name = "navigationList")]
-        public ObservableCollection<NavigationModel> NavigationList { get; set; }
+        public  ObservableCollection<NavigationModel> NavigationList { get; set; }
 
         #endregion
 
@@ -59,7 +59,8 @@ namespace MixtTrainingApp.ViewModels.WorkoutsNavigation
         /// <param name="selectedItem">Selected item from the list view.</param>
         private void NavigateToNextPage(object selectedItem)
         {
-            // Do something
+           
+            
         }
 
         #endregion

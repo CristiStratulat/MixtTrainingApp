@@ -5,6 +5,8 @@ using System.Reflection;
 using System.IO;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using System.Threading.Tasks;
+using MixtTrainingApp.Views.WorkoutsNavigation;
+
 namespace MixtTrainingApp
 {
     public partial class App : Xamarin.Forms.Application
@@ -78,7 +80,7 @@ namespace MixtTrainingApp
             App.UserUID = App.Current.Properties.ContainsKey("App.UserUID") ? App.Current.Properties["App.UserUID"] as string : "";
             if (!string.IsNullOrEmpty(App.UserUID) && !string.IsNullOrWhiteSpace(App.UserUID) )//user exists
             {
-                App.Current.MainPage = new NavigationPage(new MainPage());
+                App.Current.MainPage = new NavigationPage(new NavigationListCardPage());
             }
             else
             {

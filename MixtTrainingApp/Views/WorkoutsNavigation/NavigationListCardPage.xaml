@@ -24,6 +24,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <!--  Title View  -->
@@ -33,6 +34,7 @@
 
                 <listView:SfListView
                     Padding="15,0,10,0"
+                    ItemTapped="SfListView_ItemTapped"
                     AutoFitMode="Height"
                     IsScrollBarVisible="false"
                     ItemSpacing="0,27,0,0"
@@ -45,6 +47,7 @@
                             <ViewCell>
                                 <!--  View of each card item  -->
                                 <controls:CustomShadowFrame
+                                    
                                     Margin="0,2,5,5"
                                     Padding="0"
                                     BackgroundColor="{DynamicResource Gray-White}"
@@ -60,6 +63,7 @@
                         </DataTemplate>
                     </listView:SfListView.ItemTemplate>
                 </listView:SfListView>
+                <Button Text="Sign Out" Grid.Row="2" Clicked="Button_Clicked"/>
             </StackLayout>
 
         </Grid>
