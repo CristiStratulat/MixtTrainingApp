@@ -14,6 +14,7 @@ namespace MixtTrainingApp.Models
         public int Height { get; set; }
         public int Weight { get; set; }
         public string PhoneNumber { get; set; }
-        
+        public int CurrentWeek { get; set; }
+        public string Session { get; set; }
     }
 }

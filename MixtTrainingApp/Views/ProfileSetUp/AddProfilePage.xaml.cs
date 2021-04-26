@@ -3,6 +3,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 using MixtTrainingApp.Helper;
 using System;
+using Xamarin.Essentials;
 using MixtTrainingApp.Views.Login;
 namespace MixtTrainingApp.Views.P
 {
@@ -85,6 +86,7 @@ namespace MixtTrainingApp.Views.P
                         App.Current.Properties["App.UserUID"] = "";
                         await App.Current.SavePropertiesAsync();
                         await DisplayAlert("Congratulations", "Your account has been created", "OK");
+                        Preferences.Set("Conditioning", 1);
                         App.Current.MainPage = new NavigationPage(new SimpleLoginPage());
                     }
                     else if (Token == "existing")
